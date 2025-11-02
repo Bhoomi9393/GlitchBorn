@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Glitchborn</title>
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="container" data-aos="fade-out">
+            <h1 class="glitch" data-aos="zoom-in-up" data-text="Glitchborn">Glitchborn</h1>
+            <div class="form-container">
+                <input type="text" id="username" placeholder="Enter your username" required>
+                <div class="button">
+                    <button id="start-b">Play</button><br><br>
+                    <button id="login-b">Login</button>
+                </div>
+            </div>
+            <div id="msg" class="msg"></div>
+        </div>
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+        <script src="script.js"></script>
+    </body>
+</html>
