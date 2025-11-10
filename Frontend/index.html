@@ -8,22 +8,21 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-
         <div class="container" data-aos="fade-out">
+            <div id="particles-js"></div>
+            <div class="glitch-overlay"></div>
             <h1 class="glitch" data-aos="zoom-in-up" data-text="Glitchborn">Glitchborn</h1>
             <div class="form-container">
                 <input type="text" id="username" placeholder="Enter your username" required>
                 <div class="button">
                     <button id="start-b">Play</button><br><br>
-                    <button id="login-b">Login</button>
                 </div>
             </div>
             <div id="msg" class="msg"></div>
         </div>
         <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+        <script>AOS.init();</script>
         <script src="script.js"></script>
     </body>
 </html>
