@@ -9,7 +9,7 @@ buttons.forEach(btn => {
 });
 
 
-tsParticles.load("particles-js", // Button click animation
+tsParticles.load("particles-js", 
 const buttons = document.querySelectorAll(".button button");
 
 buttons.forEach(btn => {
@@ -19,13 +19,13 @@ buttons.forEach(btn => {
   });
 });
 
-// Load star particles
+
 tsParticles.load("particles-js", {
   background: { color: "transparent" },
   fpsLimit: 60,
   particles: {
     number: { value: 120, density: { enable: true, area: 900 } },
-    color: { value: "#8466c8ff" },         // ⭐ BRIGHT visible stars
+    color: { value: "#8466c8ff" },         
     shape: { type: "star" },
     opacity: { value: 1 },
     size: { value: 3.5, random: true },
@@ -39,7 +39,7 @@ tsParticles.load("particles-js", {
   detectRetina: true
 });
 
-// Login -> redirect to game
+
 document.getElementById("start-b").addEventListener("click", async () => {
   const username = document.getElementById("username").value.trim();
 
