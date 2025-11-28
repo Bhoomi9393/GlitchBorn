@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GlitchBorn</title>
+  <link rel="stylesheet" href="game.css" />
+</head>
+<body>
+  <div id="ui">
+    <div id="topbar">
+      <div id="playerInfo">Player: <span id="playerName">You</span></div>
+      <div id="controlsBox">
+        <label><input type="checkbox" id="cursorModeToggle"> Cursor Mode</label><br>
+        <label><input type="checkbox" id="pauseToggle"> Pause</label><br>
+        <span id="foodLabel">Food: <b id="foodCount">0</b></span><br>
+        <button id="btnReset">Reset</button>
+      </div>
+    </div>
+    <div id="notif" class="hidden"></div>
+  </div>
+
+  <div id="gameWrap">
+    <canvas id="gameCanvas"></canvas>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
