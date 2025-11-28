@@ -1,0 +1,77 @@
+:root{
+  --bg:#121010; --accent:#00ffee; --muted:#0f0f0f; --text:#cffff7;
+}
+*{
+  box-sizing:border-box
+}
+html,body{
+  height:100%; 
+  margin:0; 
+  font-family:Inter,Consolas,monospace; 
+  background:var(--bg); 
+  color:var(--text)
+}
+#ui{
+  position:absolute; 
+  top:8px; left:8px; 
+  right:8px; 
+  display:flex; 
+  justify-content:space-between; 
+  z-index:30; 
+  pointer-events:none
+}
+#topbar{
+  pointer-events:auto; 
+  display:flex; 
+  gap:16px; 
+  align-items:center
+}
+#playerInfo{
+  font-weight:700; 
+  color:var(--accent)
+}
+#controlsBox{
+  background:rgba(0,0,0,0.45); 
+  padding:8px 12px; 
+  border-radius:8px; 
+  border:1px solid rgba(0,255,238,0.06)
+}
+#controlsBox input, #controlsBox button{
+  pointer-events:auto
+}
+
+#gameWrap{
+  position:fixed; 
+  inset:0; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center
+}
+#gameCanvas{
+  display:block; 
+  z-index:1; 
+  background:radial-gradient(circle at 40% 30%, #0c0c0c, #020202); 
+  width:100%; 
+  height:100%
+}
+#notif{
+  position:fixed; 
+  left:50%; 
+  transform:translateX(-50%); 
+  bottom:30px; 
+  padding:12px 18px; 
+  background:rgba(0,0,0,0.7); 
+  border-radius:8px; 
+  color:var(--accent); 
+  border:1px solid rgba(0,255,238,0.14); 
+  font-weight:700; z-index:40}
+.hidden{display:none}
+
+button{
+  background:var(--accent); 
+  color:#021a19; 
+  border:none; 
+  padding:6px 10px; 
+  border-radius:6px; 
+  cursor:pointer; 
+  font-weight:700}
