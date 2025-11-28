@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Game Over</title>
+        <link rel="stylesheet" href="over.css">
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    </head>
+    <body>
+        <div class="square" data-aos="fade-in">
+            <div class="glitch-overlay">
+                <div class="glitch" data-aos="zoom-in-up" data-text="GlitchBorn"><h1>GlitchBorn</h1></div>
+            </div>
+            <div class="msg-container">
+                <h2>Game Over</h2>
+                <h5>You were eaten by bot</h5>
+                <h4>Food Eaten: <span id="foodCount">0</span></h4>
+                <button id="plyAgain">PlayAgain</button>
+            </div>
+        </div>
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+    <script>AOS.init();</script>
+
+        <script src="over.js"></script>
+    </body>
+</html>
