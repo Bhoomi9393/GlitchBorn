@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Glitchborn</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: #000;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    #ui {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        padding: 6px 12px;
+        background: #333;
+        border: 1px solid #666;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #555;
+    }
+
+    #canvas {
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+<div id="ui">
+    <button id="btnJoin">Join</button>
+    <button id="btnToggleCursor">Toggle Cursor Mode</button>
+    <button id="btnGlitchRandom">Random Glitch</button>
+    <button id="btnGlitchRemap">Control Remap</button>
+    <button id="btnGlitchInvert">Cursor Invert</button>
+    <button id="btnGlitchTP">Teleport</button>
+</div>
+
+<canvas id="canvas"></canvas>
+
+<script>
+const API = "http://localhost:8080/game";
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let playerId = "player1";
+let playerState = null;
+let cursorMode = false;
+
+// Join button
+document.getElementById("btnJoin").onclick = async () => {
+    const res = await fetch(`${API}/join?playerId=${playerId}`, { method: "POST" });
+    playerState = await res.json();
+};
+
+// Toggle cursor mode
+document.getElementById("btnToggleCursor").onclick = async () => {
+    cursorMode = !cursorMode;
+    const res = await fetch(`${API}/cursorMode?playerId=${playerId}&enabled=${cursorMode}`, { method: "POST" });
+    playerState = await res.json();
+};
+
+// Glitch buttons
+document.getElementById("btnGlitchRandom").onclick = () =>
+    fetch(`${API}/glitch/random?playerId=${playerId}`, { method: "POST" });
+
+document.getElementById("btnGlitchRemap").onclick = () =>
+    fetch(`${API}/glitch/apply?playerId=${playerId}&type=CONTROL_REMAPPING`, { method: "POST" });
+
+document.getElementById("btnGlitchInvert").onclick = () =>
+    fetch(`${API}/glitch/apply?playerId=${playerId}&type=CURSOR_INVERT`, { method: "POST" });
+
+document.getElementById("btnGlitchTP").onclick = () =>
+    fetch(`${API}/glitch/apply?playerId=${playerId}&type=TELEPORT`, { method: "POST" });
+
+
+// Movement: WASD
+window.addEventListener("keydown", async (e) => {
+    if (cursorMode) return;
+    if (!["w", "a", "s", "d"].includes(e.key.toLowerCase())) return;
+
+    await fetch(`${API}/moveKey?playerId=${playerId}&key=${e.key.toUpperCase()}`, {
+        method: "POST"
+    });
+});
+
+// Cursor movement mode
+window.addEventListener("mousemove", async (e) => {
+    if (!cursorMode) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    await fetch(`${API}/moveCursor?playerId=${playerId}&cursorX=${x}&cursorY=${y}`, {
+        method: "POST"
+    });
+});
+
+// Pull player state every 50ms
+async function refreshState() {
+    if (!playerId) return;
+    try {
+        const res = await fetch(`${API}/state?playerId=${playerId}`);
+        if (res.ok) playerState = await res.json();
+    } catch {}
+}
+setInterval(refreshState, 50);
+
+
+// Drawing
+function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (playerState) {
+        ctx.fillStyle = "cyan";
+        ctx.beginPath();
+        ctx.arc(playerState.x, playerState.y, 15, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "white";
+        ctx.fillText("ID: " + playerState.playerId, playerState.x - 20, playerState.y - 20);
+        ctx.fillText("Glitches: " + [...playerState.activeGlitches].join(", "), 20, 40);
+    }
+
+    requestAnimationFrame(render);
+}
+render();
+</script>
+</body>
+</html>
