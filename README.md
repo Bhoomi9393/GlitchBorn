@@ -1,6 +1,6 @@
 # GlitchBorn 
 
-A browser-based multiplayer game inspired by [agar.io](https://agar.io) — eat smaller cells to grow, avoid bigger ones to survive. Built with a vanilla HTML/CSS/JS frontend and a Java Spring Boot backend.
+A browser-based multiplayer game inspired by [agar.io](https://agar.io) — eat smaller cells to grow, avoid bigger ones to survive. Built with a HTML/CSS/JS frontend and a Java Spring Boot backend.
 
  Work in progress — core mechanics are implemented.
 
