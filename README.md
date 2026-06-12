@@ -55,10 +55,10 @@ npx serve frontend
 |---|---|
 | Player movement |  Done |
 | Cell rendering on canvas |  Done |
-| Eat/grow mechanic | 🔄 In progress |
-| Collision detection | 🔄 In progress |
-| Backend game state | 🔄 In progress |
-| Multiplayer sync | ⏳ Planned |
+| Eat/grow mechanic |  In progress |
+| Collision detection |  In progress |
+| Backend game state |  In progress |
+| Multiplayer sync |  Planned |
 
 ---
 
@@ -74,4 +74,5 @@ npx serve frontend
 ## Author
 
 **Bhoomika Chaudhary**
-[LinkedIn](https://www.linkedin.com/in/bhoomika-chaudhary-04308934b) • [GitHub](https://github.com/Bhoomi9393) • [Mail](bhoomi.init@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/bhoomika-chaudhary-04308934b) • [GitHub](https://github.com/Bhoomi9393) 
+Mail - bhoomi.init@gmail.com
